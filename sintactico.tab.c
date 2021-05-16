@@ -2195,7 +2195,7 @@ void imprimirTablas()
 }
 
 void imprimirCodigo(ListaC codigo) {
-    printf("###################\n");
+  printf("###################\n");
 	printf("# Seccion de codigo\n");
 	printf("\t.text\n");
 	printf("\t.globl main\n");

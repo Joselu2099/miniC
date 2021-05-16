@@ -14,7 +14,7 @@ make 2>&1 > errores.txt
 ./miniC $1 > miniC.s
 
 echo "Salida:"
-(spim -file miniPascal.s | tail -n +6) | while read linea
+(spim -file miniC.s | tail -n +6) | while read linea
 do
   echo " $linea"
 done
