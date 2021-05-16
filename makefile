@@ -12,6 +12,5 @@ sintactico.tab.h sintactico.tab.c : sintactico.y
 clean :
 	rm -f miniC miniC.s errores.txt lex.yy.c  sintactico.tab.*
 
-run : makerun.sh testCodigo.mp
-	@echo "****** Compilador miniC ******"
-	bash makerun.sh testCodigo.mp
+run : mc.sh testCodigo.mc
+	bash mc.sh testCodigo.mc
