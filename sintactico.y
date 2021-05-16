@@ -156,6 +156,7 @@ statement : ID ASSIGNOP expression SEMICOLON						{if (!perteneceTablaS($1)){ pr
 																	oper.arg1 = NULL;
 																	oper.arg2 = NULL;
 																	insertaLC($$,finalLC($$),oper);
+																	liberarReg(recuperaResLC($3));
 							    									}
 
 	| IF LPAREN expression RPAREN statement							{$$=$3;
@@ -174,6 +175,7 @@ statement : ID ASSIGNOP expression SEMICOLON						{if (!perteneceTablaS($1)){ pr
 																	oper.arg1 = NULL;
 																	oper.arg2 = NULL;
 																	insertaLC($$,finalLC($$),oper);
+																	liberarReg(recuperaResLC($3));
 																	}
 
 	| WHILE LPAREN expression RPAREN statement						{$$=creaLC();
@@ -205,6 +207,7 @@ statement : ID ASSIGNOP expression SEMICOLON						{if (!perteneceTablaS($1)){ pr
 																	oper.arg1 = NULL;
 																	oper.arg2 = NULL;
 																	insertaLC($$,finalLC($$),oper);
+																	liberarReg(recuperaResLC($3));
 					     											}
 
 	| PRINT print_list SEMICOLON									{$$=$2;}
@@ -336,8 +339,8 @@ expression : expression PLUSOP expression                           {$$=$1;
 					                                                oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
-																	guardaResLC($$,oper.res);
-																	liberarReg(oper.arg1);
+																													guardaResLC($$,oper.res);
+																													liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
 	| expression MINUSOP expression                                 {$$=$1;
@@ -349,8 +352,8 @@ expression : expression PLUSOP expression                           {$$=$1;
 					                                                oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
-																	guardaResLC($$,oper.res);
-																	liberarReg(oper.arg1);
+																													guardaResLC($$,oper.res);
+																													liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
 	| expression POR expression                                     {$$=$1;
@@ -375,8 +378,8 @@ expression : expression PLUSOP expression                           {$$=$1;
                                                                     oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
-																	guardaResLC($$,oper.res);
-																	liberarReg(oper.arg1);
+																													guardaResLC($$,oper.res);
+																													liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
 	| MINUSOP expression %prec UMINUS                               {$$=$2;

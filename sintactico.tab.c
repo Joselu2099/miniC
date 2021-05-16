@@ -570,9 +570,9 @@ static const yytype_int8 yytranslate[] =
 static const yytype_int16 yyrline[] =
 {
        0,    60,    60,    60,    71,    71,    75,    75,    80,    83,
-      85,    90,    93,   107,   110,   113,   126,   128,   161,   179,
-     210,   212,   215,   217,   222,   247,   275,   302,   330,   343,
-     356,   369,   382,   392,   394,   404
+      85,    90,    93,   107,   110,   113,   126,   128,   162,   181,
+     213,   215,   218,   220,   225,   250,   278,   305,   333,   346,
+     359,   372,   385,   395,   397,   407
 };
 #endif
 
@@ -1570,12 +1570,13 @@ yyreduce:
 																	oper.arg1 = NULL;
 																	oper.arg2 = NULL;
 																	insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
+																	liberarReg(recuperaResLC((yyvsp[-4].codigo)));
 							    									}
-#line 1575 "sintactico.tab.c"
+#line 1576 "sintactico.tab.c"
     break;
 
   case 18:
-#line 161 "sintactico.y"
+#line 162 "sintactico.y"
                                                                                                 {(yyval.codigo)=(yyvsp[-2].codigo);
 																	char *etiq = obtenerEtiqueta();
 																	Operacion oper;
@@ -1592,12 +1593,13 @@ yyreduce:
 																	oper.arg1 = NULL;
 																	oper.arg2 = NULL;
 																	insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
+																	liberarReg(recuperaResLC((yyvsp[-2].codigo)));
 																	}
-#line 1597 "sintactico.tab.c"
+#line 1599 "sintactico.tab.c"
     break;
 
   case 19:
-#line 179 "sintactico.y"
+#line 181 "sintactico.y"
                                                                                                 {(yyval.codigo)=creaLC();
 																	char *etiq = obtenerEtiqueta();
 																	char *etiq1 = obtenerEtiqueta();
@@ -1627,38 +1629,39 @@ yyreduce:
 																	oper.arg1 = NULL;
 																	oper.arg2 = NULL;
 																	insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
+																	liberarReg(recuperaResLC((yyvsp[-2].codigo)));
 					     											}
-#line 1632 "sintactico.tab.c"
+#line 1635 "sintactico.tab.c"
     break;
 
   case 20:
-#line 210 "sintactico.y"
+#line 213 "sintactico.y"
                                                                                                         {(yyval.codigo)=(yyvsp[-1].codigo);}
-#line 1638 "sintactico.tab.c"
+#line 1641 "sintactico.tab.c"
     break;
 
   case 21:
-#line 212 "sintactico.y"
+#line 215 "sintactico.y"
                                                                                                                 {(yyval.codigo)=(yyvsp[-1].codigo);}
-#line 1644 "sintactico.tab.c"
+#line 1647 "sintactico.tab.c"
     break;
 
   case 22:
-#line 215 "sintactico.y"
+#line 218 "sintactico.y"
                                                                                                                 {(yyval.codigo)=(yyvsp[0].codigo);}
-#line 1650 "sintactico.tab.c"
+#line 1653 "sintactico.tab.c"
     break;
 
   case 23:
-#line 217 "sintactico.y"
+#line 220 "sintactico.y"
                                                                                                         {(yyval.codigo)=(yyvsp[-2].codigo);
 					 												concatenaLC((yyval.codigo),(yyvsp[0].codigo));
 					 												liberaLC((yyvsp[0].codigo));}
-#line 1658 "sintactico.tab.c"
+#line 1661 "sintactico.tab.c"
     break;
 
   case 24:
-#line 222 "sintactico.y"
+#line 225 "sintactico.y"
                                                                                                                 {(yyval.codigo)=(yyvsp[0].codigo);
 																	Operacion oper;
 																	oper.op = "move";
@@ -1683,11 +1686,11 @@ yyreduce:
 			  														insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 			  														liberarReg(recuperaResLC((yyvsp[0].codigo)));
 																	}
-#line 1687 "sintactico.tab.c"
+#line 1690 "sintactico.tab.c"
     break;
 
   case 25:
-#line 247 "sintactico.y"
+#line 250 "sintactico.y"
                                                                                                                                 {nuevaEntrada((yyvsp[0].cadena), CADENA);
 
 																	(yyval.codigo) = creaLC();
@@ -1714,11 +1717,11 @@ yyreduce:
 
 																	insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 																	}
-#line 1718 "sintactico.tab.c"
+#line 1721 "sintactico.tab.c"
     break;
 
   case 26:
-#line 275 "sintactico.y"
+#line 278 "sintactico.y"
                                                                                                                         {if (!perteneceTablaS((yyvsp[0].cadena))){ printf("Linea %d: Variable %s no declarada \n", yylineno, (yyvsp[0].cadena)); errores_semanticos++;}
 																	else if (esConstante((yyvsp[0].cadena))){ printf("Linea %d: Asignacion a constante \n", yylineno); errores_semanticos++;}
 
@@ -1745,11 +1748,11 @@ yyreduce:
 
 		    														insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 																	}
-#line 1749 "sintactico.tab.c"
+#line 1752 "sintactico.tab.c"
     break;
 
   case 27:
-#line 302 "sintactico.y"
+#line 305 "sintactico.y"
                                                                                                                 {if (!perteneceTablaS((yyvsp[0].cadena))){ printf("Linea %d: Variable %s no declarada \n", yylineno, (yyvsp[0].cadena)); errores_semanticos++;}
 																	else if (esConstante((yyvsp[0].cadena))){ printf("Linea %d: Asignacion a constante \n", yylineno);errores_semanticos++;}
 
@@ -1776,11 +1779,11 @@ yyreduce:
 
 				  													insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 																	}
-#line 1780 "sintactico.tab.c"
+#line 1783 "sintactico.tab.c"
     break;
 
   case 28:
-#line 330 "sintactico.y"
+#line 333 "sintactico.y"
                                                                     {(yyval.codigo)=(yyvsp[-2].codigo);
 					                                                concatenaLC((yyval.codigo),(yyvsp[0].codigo));
 					                                                Operacion oper;
@@ -1790,14 +1793,14 @@ yyreduce:
 					                                                oper.arg2 = recuperaResLC((yyvsp[0].codigo));
 					                                                insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 					                                                liberaLC((yyvsp[0].codigo));
-																	guardaResLC((yyval.codigo),oper.res);
-																	liberarReg(oper.arg1);
+																													guardaResLC((yyval.codigo),oper.res);
+																													liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
-#line 1797 "sintactico.tab.c"
+#line 1800 "sintactico.tab.c"
     break;
 
   case 29:
-#line 343 "sintactico.y"
+#line 346 "sintactico.y"
                                                                         {(yyval.codigo)=(yyvsp[-2].codigo);
 					                                                concatenaLC((yyval.codigo),(yyvsp[0].codigo));
 					                                                Operacion oper;
@@ -1807,14 +1810,14 @@ yyreduce:
 					                                                oper.arg2 = recuperaResLC((yyvsp[0].codigo));
 					                                                insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 					                                                liberaLC((yyvsp[0].codigo));
-																	guardaResLC((yyval.codigo),oper.res);
-																	liberarReg(oper.arg1);
+																													guardaResLC((yyval.codigo),oper.res);
+																													liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
-#line 1814 "sintactico.tab.c"
+#line 1817 "sintactico.tab.c"
     break;
 
   case 30:
-#line 356 "sintactico.y"
+#line 359 "sintactico.y"
                                                                         {(yyval.codigo)=(yyvsp[-2].codigo);
 					                                                concatenaLC((yyval.codigo),(yyvsp[0].codigo));
 					                                                Operacion oper;
@@ -1827,11 +1830,11 @@ yyreduce:
 																	guardaResLC((yyval.codigo),oper.res);
 																	liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
-#line 1831 "sintactico.tab.c"
+#line 1834 "sintactico.tab.c"
     break;
 
   case 31:
-#line 369 "sintactico.y"
+#line 372 "sintactico.y"
                                                                         {(yyval.codigo)=(yyvsp[-2].codigo);
 					                                                concatenaLC((yyval.codigo),(yyvsp[0].codigo));
 					                                                Operacion oper;
@@ -1841,14 +1844,14 @@ yyreduce:
                                                                     oper.arg2 = recuperaResLC((yyvsp[0].codigo));
 					                                                insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 					                                                liberaLC((yyvsp[0].codigo));
-																	guardaResLC((yyval.codigo),oper.res);
-																	liberarReg(oper.arg1);
+																													guardaResLC((yyval.codigo),oper.res);
+																													liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
-#line 1848 "sintactico.tab.c"
+#line 1851 "sintactico.tab.c"
     break;
 
   case 32:
-#line 382 "sintactico.y"
+#line 385 "sintactico.y"
                                                                         {(yyval.codigo)=(yyvsp[0].codigo);
 					                                                Operacion oper;
 					                                                oper.op = "neg";
@@ -1858,17 +1861,17 @@ yyreduce:
 	  				                                                insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 																	liberarReg(oper.arg1);
 																	guardaResLC((yyval.codigo),oper.res);}
-#line 1862 "sintactico.tab.c"
+#line 1865 "sintactico.tab.c"
     break;
 
   case 33:
-#line 392 "sintactico.y"
+#line 395 "sintactico.y"
                                                                         {(yyval.codigo)=(yyvsp[-1].codigo);}
-#line 1868 "sintactico.tab.c"
+#line 1871 "sintactico.tab.c"
     break;
 
   case 34:
-#line 394 "sintactico.y"
+#line 397 "sintactico.y"
                                                                                                                                 {if (!perteneceTablaS((yyvsp[0].cadena))){ printf("Linea %d: Variable %s no declarada \n", yylineno, (yyvsp[0].cadena)); errores_semanticos++;}
                                                                     (yyval.codigo) = creaLC();
                                                                     Operacion oper;
@@ -1878,11 +1881,11 @@ yyreduce:
                                                                     oper.arg2 = NULL;
                                                                     insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
                                                                     guardaResLC((yyval.codigo),oper.res);}
-#line 1882 "sintactico.tab.c"
+#line 1885 "sintactico.tab.c"
     break;
 
   case 35:
-#line 404 "sintactico.y"
+#line 407 "sintactico.y"
                                                                     {(yyval.codigo) = creaLC();
 		                                                            Operacion oper;
 		                                                            oper.op = "li";
@@ -1891,11 +1894,11 @@ yyreduce:
 		                                                            oper.arg2 = NULL;
 		                                                            insertaLC((yyval.codigo),finalLC((yyval.codigo)),oper);
 		                                                            guardaResLC((yyval.codigo),oper.res);}
-#line 1895 "sintactico.tab.c"
+#line 1898 "sintactico.tab.c"
     break;
 
 
-#line 1899 "sintactico.tab.c"
+#line 1902 "sintactico.tab.c"
 
       default: break;
     }
@@ -2127,7 +2130,7 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 414 "sintactico.y"
+#line 417 "sintactico.y"
 
 int perteneceTablaS(char* c)
 {
