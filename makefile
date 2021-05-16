@@ -13,8 +13,4 @@ clean :
 	rm -f miniC miniC.s errores.txt lex.yy.c  sintactico.tab.*
 
 run : mc.sh testCodigo.mc
-<<<<<<< HEAD
-=======
-	@echo "****** Compilador miniC ******"
->>>>>>> 068b0e894b140f7c37de58039cdbf1d5d76716ec
 	bash mc.sh testCodigo.mc
