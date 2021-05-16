@@ -220,17 +220,17 @@ print_list : print_item												{$$=$1;}
 	;
 
 print_item : expression												{$$=$1;
-			  														Operacion oper;
-			  														oper.op = "li";
-			  														oper.res = "$v0";
-			  														oper.arg1 = "1";
-			  														oper.arg2 = NULL;
+																	Operacion oper;
+																	oper.op = "move";
+																	oper.res = "$a0";
+																	oper.arg1 = recuperaResLC($1);
+																	oper.arg2 = NULL;
 
 			  														insertaLC($$,finalLC($$),oper);
 
-			  														oper.op = "move";
-			  														oper.res = "$a0";
-			  														oper.arg1 = recuperaResLC($1);
+																	oper.op = "li";
+			  														oper.res = "$v0";
+			  														oper.arg1 = "1";
 			  														oper.arg2 = NULL;
 
 			  														insertaLC($$,finalLC($$),oper);
@@ -336,6 +336,7 @@ expression : expression PLUSOP expression                           {$$=$1;
 					                                                oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
+																	guardaResLC($$,oper.res);
 																	liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
@@ -348,6 +349,7 @@ expression : expression PLUSOP expression                           {$$=$1;
 					                                                oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
+																	guardaResLC($$,oper.res);
 																	liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
@@ -360,6 +362,7 @@ expression : expression PLUSOP expression                           {$$=$1;
 					                                                oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
+																	guardaResLC($$,oper.res);
 																	liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
@@ -372,6 +375,7 @@ expression : expression PLUSOP expression                           {$$=$1;
                                                                     oper.arg2 = recuperaResLC($3);
 					                                                insertaLC($$,finalLC($$),oper);
 					                                                liberaLC($3);
+																	guardaResLC($$,oper.res);
 																	liberarReg(oper.arg1);
 					                                                liberarReg(oper.arg2);}
 
@@ -381,7 +385,9 @@ expression : expression PLUSOP expression                           {$$=$1;
 					                                                oper.res = obtenerReg();
 					                                                oper.arg1 = recuperaResLC($2);
 					                                                oper.arg2 = NULL;
-	  				                                                insertaLC($$,finalLC($$),oper);}
+	  				                                                insertaLC($$,finalLC($$),oper);
+																	liberarReg(oper.arg1);
+																	guardaResLC($$,oper.res);}
 
 	| LPAREN expression RPAREN                                      {$$=$2;}
 
