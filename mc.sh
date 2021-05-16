@@ -8,7 +8,11 @@ then
 	exit 2
 fi
 
+<<<<<<< HEAD
 echo "****** Compilador miniC ******"
+=======
+echo "****** Compilador miniPascal ******"
+>>>>>>> 068b0e894b140f7c37de58039cdbf1d5d76716ec
 make 2>&1 > errores.txt
 
 ./miniC $1 > miniC.s
