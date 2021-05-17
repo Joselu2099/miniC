@@ -16,7 +16,9 @@ make 2>&1 > errores.txt
 FIRSTLINE=$(head -n 1 miniC.s | cut -c1)
 if test "$FIRSTLINE" == "#"
 	then
+		echo "- Compilado con exito -"
 		spim -file miniC.s | tail -n +6
 	else
+		echo -e '\e[0;31mErrores\e[0m'
 		cat miniC.s
 fi
