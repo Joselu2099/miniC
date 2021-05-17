@@ -61,7 +61,7 @@ program : {tablaSimbolos = creaLS();}
  	VOID ID LPAREN RPAREN LCOR declarations statement_list RCOR     {if (ok()) {
                                                                         imprimirTablas();
 																		concatenaLC($7,$8);
-		  																imprimirCodigo($7);
+		  															imprimirCodigo($7);
                                                                     }
                                                                     else printf("errores lexicos: %d, errores sintacticos: %d, errores semanticos: %d\n", errores_lexicos, errores_sintacticos, errores_semanticos);
                                                                     liberaLS(tablaSimbolos);

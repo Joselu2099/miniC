@@ -12,7 +12,7 @@ void prueba() {
     if (a) print "a","\n";
     else if (b) print "No a y b\n";
          else while (c) {
-             print "c =",c,"\n";
+             print "c=",c,"\n";
              c = c-2+1;
          }
     print "Final","\n";

@@ -1,3 +1,0 @@
-make[1]: se entra en el directorio '/home/joselu/Documentos/Universidad/COMP/miniC'
-make[1]: 'miniC' está actualizado.
-make[1]: se sale del directorio '/home/joselu/Documentos/Universidad/COMP/miniC'

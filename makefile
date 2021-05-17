@@ -12,5 +12,5 @@ sintactico.tab.h sintactico.tab.c : sintactico.y
 clean :
 	rm -f miniC miniC.s errores.txt lex.yy.c  sintactico.tab.*
 
-run : mc.sh testCodigo.mc
-	bash mc.sh testCodigo.mc
+run : mc.sh pruebas/test_sem4.mc.txt
+	bash mc.sh pruebas/test_sem1.mc.txt
