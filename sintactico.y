@@ -39,24 +39,37 @@ extern int yylineno;
 	#include "listaCodigo.h"
 }
 
+/*  Definicion de tipos semanticos */
+
 %union{
     char *cadena;
     ListaC codigo;
 }
 
+%type <codigo> expression statement_list statement print_list print_item read_list declarations identifier_list asig
+
+/*Definicion de tokens */
+
 %token VOID VAR READ PRINT CONST IF ELSE WHILE LPAREN RPAREN SEMICOLON COMMA ASSIGNOP LCOR RCOR
+%token <cadena> STRING ID INTLITERAL
+
+/* Flags de funcionamiento de Bison */
+
+%define parse.error verbose //genera mensajes de error extensos
+%define parse.trace // Activar trazas con yydebug=1
+
+/* Asociatividad y precedencia de operadores */
 
 %left PLUSOP MINUSOP
 %left POR BARRAOP
 %left UMINUS
 
+/* Hay un conflicto desplaza/reduce en if-else */
 %expect 1
-
-%type <codigo> expression statement_list statement print_list print_item read_list declarations identifier_list asig
-%token <cadena> STRING ID INTLITERAL
 
 %%
 
+/*Reglas de produccion */
 program : {tablaSimbolos = creaLS();}
  	VOID ID LPAREN RPAREN LCOR declarations statement_list RCOR     {if (ok()) {
                                                                         imprimirTablas();

@@ -23,7 +23,7 @@ int main(int argc, char *argv[])
     }
     yyin=fich;
     /*Llamada al sintactico*/
-    //yydebug = 0;
+    yydebug = 0;
     yyparse();
     if (errores_sintacticos) {
 	printf("Analisis sintactico con errores\n");
