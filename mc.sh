@@ -13,8 +13,10 @@ make 2>&1 > errores.txt
 
 ./miniC $1 > miniC.s
 
-echo "Salida:"
-(spim -file miniC.s | tail -n +6) | while read linea
-do
-  echo " $linea"
-done
+FIRSTLINE=$(head -n 1 miniC.s | cut -c1)
+if test "$FIRSTLINE" == "#"
+	then
+		spim -file miniC.s | tail -n +6
+	else
+		cat miniC.s
+fi
