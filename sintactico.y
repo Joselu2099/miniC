@@ -88,7 +88,9 @@ identifier_list : asig												{$$=$1;}
 	;
 
 asig : ID															{if (!perteneceTablaS($1)) nuevaEntrada($1, tipo);
-																	else{ printf("Linea %d: Variable %s ya declarada \n", yylineno, $1); errores_semanticos++;}}
+																	else{ printf("Linea %d: Variable %s ya declarada \n", yylineno, $1); errores_semanticos++;}
+
+																	$$=creaLC();}
 
 	| ID ASSIGNOP expression										{if (!perteneceTablaS($1)) nuevaEntrada($1, tipo);
 																	else{ printf("Linea %d: Variable %s ya declarada \n", yylineno, $1); errores_semanticos++;}
