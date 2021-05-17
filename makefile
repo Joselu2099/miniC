@@ -10,7 +10,7 @@ sintactico.tab.h sintactico.tab.c : sintactico.y
 	bison -d -v sintactico.y
 
 clean :
-	rm -f miniC miniC.s errores.txt lex.yy.c  sintactico.tab.*
+	rm -f miniC miniC.s errores.txt sintactico.output lex.yy.c  sintactico.tab.*
 
 run : mc.sh pruebas/test_sem4.mc.txt
 	bash mc.sh pruebas/test_sem1.mc.txt
