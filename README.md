@@ -1,4 +1,4 @@
-# miniC
+# Compilador de miniC
 
 # Para usar el compilador de miniC ejecuta:
   >make
@@ -7,7 +7,7 @@
   >make run
 
 # Para ejecutar con miniC cualquier programa escrito en miniC se usa:
-  >./mc.sh [file] 
+  >./mc.sh [file]
 
 # Para simplemente compilar y generar el codigo en ensamblador:
-  >./miniC [file] > miniC.s 
+  >./miniC [file] > miniC.s
