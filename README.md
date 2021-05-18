@@ -11,7 +11,3 @@
 
 # Para simplemente compilar y generar el codigo en ensamblador:
   >./miniC [file] > miniC.s
-
-# Proyecto para la asignatura de compiladores 2021
-  Jose Luis Sánchez Carrasco
-  Eduardo Espinosa Meroño
